@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <scala.version>2.11</scala.version>
+        <scala.version>2.12</scala.version>
         <spark.version>2.4.5</spark.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -63,13 +63,13 @@
 
         <dependency>
             <groupId>ml.combust.mleap</groupId>
-            <artifactId>mleap-spark_2.11</artifactId>
+            <artifactId>mleap-spark_2.12</artifactId>
             <version>0.16.0</version>
         </dependency>
 
         <dependency>
             <groupId>ml.combust.mleap</groupId>
-            <artifactId>mleap-spark-extension_2.11</artifactId>
+            <artifactId>mleap-spark-extension_2.12</artifactId>
             <version>0.16.0</version>
         </dependency>
 
