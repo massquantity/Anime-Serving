@@ -1,6 +1,6 @@
 package com.mass.evaluate
 
-import com.mass.data.DataSplitter
+import com.mass.data.DataSplitter.stratified_split
 import org.apache.spark.sql.{Column, DataFrame}
 import org.apache.spark.ml.classification.{MultilayerPerceptronClassifier, RandomForestClassifier}
 import org.apache.spark.ml.{Pipeline, PipelineModel, PipelineStage}
@@ -13,7 +13,7 @@ import scala.util.Random
 
 class EvalClassifier(algo: Option[String], pipelineStages: Array[PipelineStage]) {
   def eval(data: DataFrame): Unit = {
-    val Array(trainData, evalData) = DataSplitter.stratified_split(data, 0.8, "user_id")
+    val Array(trainData, evalData) = stratified_split(data, 0.8, "user_id")
     val pipeline = new Pipeline().setStages(pipelineStages)
     val pipeModel: PipelineModel = pipeline.fit(trainData)
     val trainTransformedData = pipeModel.transform(trainData)

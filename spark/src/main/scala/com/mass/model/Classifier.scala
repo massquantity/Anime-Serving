@@ -1,7 +1,7 @@
 package com.mass.model
 
 import com.mass.evaluate.EvalClassifier
-import com.mass.feature.FeatureTransformer
+import com.mass.feature.FeatureTransformer.preProcessPipeline
 import org.apache.spark.ml.classification.{MultilayerPerceptronClassifier, RandomForestClassifier}
 import org.apache.spark.ml.linalg.{DenseVector, SparseVector, Vector}
 import org.apache.spark.ml.{Pipeline, PipelineModel, PipelineStage}
@@ -14,7 +14,7 @@ class Classifier(algo: Option[String] = Some("mlp")) extends Serializable {
   var pipelineModel: PipelineModel = _
 
   def train(data: DataFrame, evaluate: Boolean, debug: Boolean): Unit = {
-    val prePipelineStages: Array[PipelineStage] = FeatureTransformer.preProcessPipeline(data)
+    val prePipelineStages: Array[PipelineStage] = preProcessPipeline(data)
 
     if (debug) {
       val pipeline = new Pipeline().setStages(prePipelineStages)

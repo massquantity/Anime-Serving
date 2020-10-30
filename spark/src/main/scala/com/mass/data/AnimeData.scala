@@ -1,7 +1,8 @@
 package com.mass.data
 
 import com.mass.feature.MultiHotEncoder
-import com.mass.utils.{Context, ConvertLabel}
+import com.mass.utils.Context
+import com.mass.utils.RatingToLabel.convertClassifierLabel
 import org.apache.spark.ml.{Pipeline, PipelineModel, PipelineStage}
 import org.apache.spark.ml.feature.{RegexTokenizer, StopWordsRemover, Word2Vec}
 import org.apache.spark.sql.{Column, DataFrame}
@@ -70,11 +71,7 @@ object AnimeData extends Context {
       // .na.fill(rawData.selectExpr("mean(web_rating) as mean").first.getAs[Double]("mean"), Seq("web_rating"))
     }
 
-    if (convertLabel) {
-      ConvertLabel.convert(rawData)
-    } else {
-      rawData
-    }
+    if (convertLabel) convertClassifierLabel(rawData) else rawData
   }
 
   def transformText(df: DataFrame): Unit = {
