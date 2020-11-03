@@ -39,9 +39,9 @@ def merge_data(rating, anime, type_dummies, genre_dummies, name_vectors):
 
 
 if __name__ == "__main__":
-    rating = pd.read_csv("/home/massquantity/Workspace/serving-example/spark/src/main/resources/rating.csv")
+    rating = pd.read_csv("/rating.csv")
     rating = rating[rating.rating != -1].sample(frac=0.1, replace=False)
-    anime = pd.read_csv("/home/massquantity/Workspace/serving-example/spark/src/main/resources/anime.csv")
+    anime = pd.read_csv("/anime.csv")
     anime.rename(columns={"rating": "web_rating"}, inplace=True)
     anime.fillna(
         value={
@@ -63,14 +63,3 @@ if __name__ == "__main__":
     train_data, test_data = train_test_split(data, test_size=0.2)
     train_data.to_csv("../train_data1111.csv", header=None, index=False)
     test_data.to_csv("../test_data1111.csv", header=None, index=False)
-
-
-
-
-
-
-
-
-
-
-

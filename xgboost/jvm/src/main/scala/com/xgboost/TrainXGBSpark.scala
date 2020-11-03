@@ -26,12 +26,12 @@ object TrainXGBSpark {
     var trainData = spark.read
       .option("inferSchema", "true")
       .option("header", "false")
-      .csv("/home/massquantity/Workspace/serving-example/xgboost/train_data.csv")
+      .csv("/xgboost/train_data.csv")
 
     var testData = spark.read
       .option("inferSchema", "true")
       .option("header", "false")
-      .csv("/home/massquantity/Workspace/serving-example/xgboost/test_data.csv")
+      .csv("/xgboost/test_data.csv")
     trainData = trainData.withColumnRenamed("_c0", "label")
     testData = testData.withColumnRenamed("_c0", "label")
     // trainData.withColumn("label", $"_c0".cast("int"))
