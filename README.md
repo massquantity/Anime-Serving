@@ -4,4 +4,5 @@ Spark model serving using PMML and MLeap. Data comes from Kaggle - [[Anime Recom
 
 ### Note:
 Spark Version: 2.4.5
+
 Scala Version: 2.12
