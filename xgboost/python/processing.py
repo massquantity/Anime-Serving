@@ -61,5 +61,5 @@ if __name__ == "__main__":
     data = merge_data(rating, anime, type_dummies, genre_dummies, name_vectors)
 
     train_data, test_data = train_test_split(data, test_size=0.2)
-    train_data.to_csv("../train_data1111.csv", header=None, index=False)
-    test_data.to_csv("../test_data1111.csv", header=None, index=False)
+    train_data.to_csv("../train_data.csv", header=None, index=False)
+    test_data.to_csv("../test_data.csv", header=None, index=False)
