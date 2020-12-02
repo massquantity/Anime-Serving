@@ -49,13 +49,13 @@ class EvalClassifier(algo: Option[String], pipelineStages: Array[PipelineStage])
       .setPredictionCol("pred")
       .setProbabilityCol("prob")
 
-    val pipe = new Pipeline().setStages(Array(mlp))
+    val pipeline = new Pipeline().setStages(Array(mlp))
     val paramGrid = new ParamGridBuilder()
       .addGrid(mlp.layers, Seq(Array[Int](inputSize, 20, 10, 3), Array[Int](inputSize, 50, 30, 10, 3)))
       .addGrid(mlp.stepSize, Seq(0.01, 0.03, 0.05))
       .addGrid(mlp.maxIter, Seq(10, 30, 50))
       .build()
-    showScoreAndParam(trainData, evalData, pipe, paramGrid)
+    showScoreAndParam(trainData, evalData, pipeline, paramGrid)
   }
 
   private def evaluateRF(trainData: DataFrame, evalData: DataFrame): Unit = {
