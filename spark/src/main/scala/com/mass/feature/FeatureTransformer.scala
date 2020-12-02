@@ -20,7 +20,7 @@ object FeatureTransformer {
       .setWithMean(true)
       .setWithStd(true)
 
-    // deal with cateorical features
+    // deal with categorical features
     val categoricalFeatureIndexers = categoricalFeatures.map {feature =>
       new StringIndexer(uid = s"string_indexer_$feature")
         .setInputCol(feature)
